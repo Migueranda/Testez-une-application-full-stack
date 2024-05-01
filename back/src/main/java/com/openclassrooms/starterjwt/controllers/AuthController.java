@@ -2,6 +2,7 @@ package com.openclassrooms.starterjwt.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,26 +28,33 @@ import com.openclassrooms.starterjwt.security.services.UserDetailsImpl;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtils jwtUtils;
-    private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
 
-    AuthController(AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder,
-            JwtUtils jwtUtils,
-            UserRepository userRepository) {
+    //public au lieu private
+    public final AuthenticationManager authenticationManager;
+    public final JwtUtils jwtUtils;
+    public final PasswordEncoder passwordEncoder;
+    public final UserRepository userRepository;
+
+    public AuthController(AuthenticationManager authenticationManager,
+                          PasswordEncoder passwordEncoder,
+                          JwtUtils jwtUtils,
+                          UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtUtils = jwtUtils;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
+ //    if (authentication == null) {
+//            // Gérer le cas où l'authentification échoue
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
+//        }
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
@@ -66,6 +74,8 @@ public class AuthController {
                 isAdmin));
     }
 
+
+
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
@@ -73,7 +83,6 @@ public class AuthController {
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already taken!"));
         }
-
         // Create new user's account
         User user = new User(signUpRequest.getEmail(),
                 signUpRequest.getLastName(),

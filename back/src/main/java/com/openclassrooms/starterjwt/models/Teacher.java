@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 @Table(name = "TEACHERS")
 @EntityListeners(AuditingEntityListener.class)
 @Data
+@Getter
+@Setter
 @Accessors(chain = true)
 @EqualsAndHashCode(of = {"id"})
 @Builder
@@ -43,4 +45,6 @@ public class Teacher {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+
 }

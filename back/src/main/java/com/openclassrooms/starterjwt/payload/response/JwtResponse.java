@@ -23,4 +23,5 @@ public class JwtResponse {
     this.username = username;
     this.admin = admin;
   }
+
 }

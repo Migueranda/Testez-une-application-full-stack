@@ -6,11 +6,12 @@ import com.openclassrooms.starterjwt.models.Session;
 import com.openclassrooms.starterjwt.models.User;
 import com.openclassrooms.starterjwt.repository.SessionRepository;
 import com.openclassrooms.starterjwt.repository.UserRepository;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Getter
 @Service
 public class SessionService {
     private final SessionRepository sessionRepository;
@@ -31,10 +32,12 @@ public class SessionService {
     }
 
     public List<Session> findAll() {
+
         return this.sessionRepository.findAll();
     }
 
     public Session getById(Long id) {
+
         return this.sessionRepository.findById(id).orElse(null);
     }
 
@@ -44,6 +47,7 @@ public class SessionService {
     }
 
     public void participate(Long id, Long userId) {
+
         Session session = this.sessionRepository.findById(id).orElse(null);
         User user = this.userRepository.findById(userId).orElse(null);
         if (session == null || user == null) {
@@ -75,4 +79,6 @@ public class SessionService {
 
         this.sessionRepository.save(session);
     }
+
+
 }
