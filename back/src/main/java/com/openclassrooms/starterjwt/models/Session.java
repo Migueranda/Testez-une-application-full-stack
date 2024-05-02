@@ -41,6 +41,7 @@ public class Session {
     @Size(max = 2500)
     private String description;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;

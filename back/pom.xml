@@ -71,6 +71,10 @@
 			<version>1.18.32</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+
+
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
 		<!--<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -104,6 +108,12 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
 			<version>1.5.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.1.5.Final</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

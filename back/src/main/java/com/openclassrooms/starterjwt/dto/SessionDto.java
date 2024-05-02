@@ -1,8 +1,6 @@
 package com.openclassrooms.starterjwt.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class SessionDto {
@@ -24,6 +24,8 @@ public class SessionDto {
     @NotNull
     private Date date;
 
+    // Ajoutez le getter pour teacher_id
+    @Getter
     @NotNull
     private Long teacher_id;
 
@@ -36,4 +38,6 @@ public class SessionDto {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+
 }
