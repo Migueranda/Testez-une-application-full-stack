@@ -1,0 +1,212 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > SessionMapperImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.openclassrooms.starterjwt.mapper</a>
+</div>
+
+<h1>Coverage Summary for Class: SessionMapperImpl (com.openclassrooms.starterjwt.mapper)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SessionMapperImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/48)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.openclassrooms.starterjwt.mapper;
+&nbsp;
+&nbsp;import com.openclassrooms.starterjwt.dto.SessionDto;
+&nbsp;import com.openclassrooms.starterjwt.models.Session;
+&nbsp;import com.openclassrooms.starterjwt.models.Teacher;
+&nbsp;import com.openclassrooms.starterjwt.models.User;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;import javax.annotation.Generated;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;@Generated(
+&nbsp;    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+&nbsp;    date = &quot;2024-05-24T16:03:35+0200&quot;,
+&nbsp;    comments = &quot;version: 1.5.1.Final, compiler: javac, environment: Java 22 (Oracle Corporation)&quot;
+&nbsp;)
+&nbsp;@Component
+<b class="nc">&nbsp;public class SessionMapperImpl extends SessionMapper {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;Session&gt; toEntity(List&lt;SessionDto&gt; dtoList) {
+<b class="nc">&nbsp;        if ( dtoList == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        List&lt;Session&gt; list = new ArrayList&lt;Session&gt;( dtoList.size() );</b>
+<b class="nc">&nbsp;        for ( SessionDto sessionDto : dtoList ) {</b>
+<b class="nc">&nbsp;            list.add( toEntity( sessionDto ) );</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return list;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;SessionDto&gt; toDto(List&lt;Session&gt; entityList) {
+<b class="nc">&nbsp;        if ( entityList == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        List&lt;SessionDto&gt; list = new ArrayList&lt;SessionDto&gt;( entityList.size() );</b>
+<b class="nc">&nbsp;        for ( Session session : entityList ) {</b>
+<b class="nc">&nbsp;            list.add( toDto( session ) );</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return list;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Session toEntity(SessionDto sessionDto) {
+<b class="nc">&nbsp;        if ( sessionDto == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        Session session = new Session();</b>
+&nbsp;
+<b class="nc">&nbsp;        session.setDescription( sessionDto.getDescription() );</b>
+<b class="nc">&nbsp;        session.setId( sessionDto.getId() );</b>
+<b class="nc">&nbsp;        session.setName( sessionDto.getName() );</b>
+<b class="nc">&nbsp;        session.setDate( sessionDto.getDate() );</b>
+<b class="nc">&nbsp;        session.setCreatedAt( sessionDto.getCreatedAt() );</b>
+<b class="nc">&nbsp;        session.setUpdatedAt( sessionDto.getUpdatedAt() );</b>
+&nbsp;
+<b class="nc">&nbsp;        session.setTeacher( sessionDto.getTeacher_id() != null ? this.teacherService.findById(sessionDto.getTeacher_id()) : null );</b>
+<b class="nc">&nbsp;        session.setUsers( Optional.ofNullable(sessionDto.getUsers()).orElseGet(Collections::emptyList).stream().map(user_id -&gt; { User user = this.userService.findById(user_id); if (user != null) { return user; } return null; }).collect(Collectors.toList()) );</b>
+&nbsp;
+<b class="nc">&nbsp;        return session;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public SessionDto toDto(Session session) {
+<b class="nc">&nbsp;        if ( session == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        SessionDto sessionDto = new SessionDto();</b>
+&nbsp;
+<b class="nc">&nbsp;        sessionDto.setDescription( session.getDescription() );</b>
+<b class="nc">&nbsp;        sessionDto.setTeacher_id( sessionTeacherId( session ) );</b>
+<b class="nc">&nbsp;        sessionDto.setId( session.getId() );</b>
+<b class="nc">&nbsp;        sessionDto.setName( session.getName() );</b>
+<b class="nc">&nbsp;        sessionDto.setDate( session.getDate() );</b>
+<b class="nc">&nbsp;        sessionDto.setCreatedAt( session.getCreatedAt() );</b>
+<b class="nc">&nbsp;        sessionDto.setUpdatedAt( session.getUpdatedAt() );</b>
+&nbsp;
+<b class="nc">&nbsp;        sessionDto.setUsers( Optional.ofNullable(session.getUsers()).orElseGet(Collections::emptyList).stream().map(u -&gt; u.getId()).collect(Collectors.toList()) );</b>
+&nbsp;
+<b class="nc">&nbsp;        return sessionDto;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Long sessionTeacherId(Session session) {
+<b class="nc">&nbsp;        if ( session == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        Teacher teacher = session.getTeacher();</b>
+<b class="nc">&nbsp;        if ( teacher == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        Long id = teacher.getId();</b>
+<b class="nc">&nbsp;        if ( id == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-24 16:06</div>
+</div>
+</body>
+</html>

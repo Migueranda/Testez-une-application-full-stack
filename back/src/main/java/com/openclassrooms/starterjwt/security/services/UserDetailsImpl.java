@@ -20,7 +20,8 @@ import lombok.Getter;
 @Setter
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
-
+  @Getter
+  @Setter
   private Long id;
 
   private String username;
@@ -34,9 +35,21 @@ public class UserDetailsImpl implements UserDetails {
   @JsonIgnore
   private String password;
 
-  public UserDetailsImpl() {
+//  public Boolean isAdmin() {
+//    return admin;
+//  }
 
+  public UserDetailsImpl(Long id, String username, String firstName, String lastName, Boolean isAdmin) {
+    this.id = id;
+    this.username = username;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.admin = isAdmin;
   }
+
+//  public UserDetailsImpl() {
+//
+//  }
 
 
   public Collection<? extends GrantedAuthority> getAuthorities() {

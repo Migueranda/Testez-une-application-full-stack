@@ -22,4 +22,11 @@ public class SignupRequest {
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
+
+//    public SignupRequest(String mail, String doe, String john, String password) {
+//    }
+//
+//  public SignupRequest() {
+//
+//  }
 }

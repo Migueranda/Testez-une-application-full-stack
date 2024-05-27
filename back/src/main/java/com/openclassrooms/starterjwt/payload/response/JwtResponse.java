@@ -24,4 +24,8 @@ public class JwtResponse {
     this.admin = admin;
   }
 
+  public boolean isAdmin() {
+    return admin;
+  }
+
 }

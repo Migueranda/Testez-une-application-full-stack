@@ -226,7 +226,7 @@ class SessionServiceTest {
     }
 
     @Test
-    public void testNoLongerParticipate_SessionDoesNotExist() {//Vérification que lorsque la méthode noLongerParticipate() est appelée sur sessionService avec l'identifiant d'une session qui n'existe pas, elle lance une exception de type NotFoundException et qu'aucune modification n'est enregistrée via le repository mock.
+    public void testNoLongerParticipateSessionDoesNotExist() {//Vérification que lorsque la méthode noLongerParticipate() est appelée sur sessionService avec l'identifiant d'une session qui n'existe pas, elle lance une exception de type NotFoundException et qu'aucune modification n'est enregistrée via le repository mock.
         //Définitions des données nécessaires.
         Long sessionId = 1L;
         Long userId = 101L;
@@ -244,7 +244,7 @@ class SessionServiceTest {
     }
 
     @Test
-    public void testNoLongerParticipate_SessionExist() {
+    public void testNoLongerParticipateSessionExist() {
         //Définition les données nécessaires
         Long sessionId = 1L;
         Long userId = 101L;

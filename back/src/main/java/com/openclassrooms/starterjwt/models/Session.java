@@ -21,9 +21,8 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(of = {"id"})
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
+
 @ToString
 public class Session {
     @Id
@@ -61,3 +60,5 @@ public class Session {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }
+//@Builder
+//@AllArgsConstructor

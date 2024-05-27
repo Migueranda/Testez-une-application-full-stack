@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class UserDto {
     private Long id;
 
@@ -33,7 +33,7 @@ public class UserDto {
     private boolean admin;
 
     @JsonIgnore
-    @Size(max = 120)
+    @Size( max = 120)
     private String password;
 
     private LocalDateTime createdAt;

@@ -2,7 +2,6 @@ package com.openclassrooms.starterjwt.controllers;
 
 import javax.validation.Valid;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -44,10 +43,6 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
- //    if (authentication == null) {
-//            // Gérer le cas où l'authentification échoue
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
-//        }
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -60,11 +55,11 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-        boolean isAdmin = false;
-        User user = this.userRepository.findByEmail(userDetails.getUsername()).orElse(null);
-        if (user != null) {
-            isAdmin = user.isAdmin();
-        }
+            boolean isAdmin = false;
+            User user = this.userRepository.findByEmail(userDetails.getUsername()).orElse(null);
+            if (user != null) {
+                isAdmin = user.isAdmin();
+            }
 
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
@@ -72,8 +67,8 @@ public class AuthController {
                 userDetails.getFirstName(),
                 userDetails.getLastName(),
                 isAdmin));
-    }
 
+    }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {

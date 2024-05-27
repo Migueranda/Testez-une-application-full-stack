@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
-@Data
+//@Data
 @Setter
 @Getter
 @NoArgsConstructor
@@ -25,7 +25,7 @@ public class SessionDto {
     private Date date;
 
     // Ajoutez le getter pour teacher_id
-    @Getter
+   // @Getter
     @NotNull
     private Long teacher_id;
 
@@ -38,6 +38,7 @@ public class SessionDto {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
 
 
 }

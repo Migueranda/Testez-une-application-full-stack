@@ -19,14 +19,18 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
 @EqualsAndHashCode(of = {"id"})
-@Builder
+
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
-@ToString
+
+@Getter
+@Setter
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter
+  @Setter
   private Long id;
 
   @NonNull
@@ -45,8 +49,9 @@ public class User {
   private String firstName;
 
   @NonNull
-  @Size(max = 120)
+  @Size(min = 8, max = 120)//modification
   private String password;
+
 
   @NonNull
   private boolean admin;
@@ -59,4 +64,14 @@ public class User {
   @Column(name = "updated_at")
   private LocalDateTime updatedAt;
 
+
+
+  public Boolean isAdmin() {
+    return this.admin; // Supposons que "admin" est un attribut de la classe User
+  }
+
+
 }
+//@Builder
+//@ToString
+
