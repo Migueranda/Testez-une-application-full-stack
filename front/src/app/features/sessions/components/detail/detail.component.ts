@@ -13,6 +13,7 @@ import { SessionApiService } from '../../services/session-api.service';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
+
 export class DetailComponent implements OnInit {
   public session: Session | undefined;
   public teacher: Teacher | undefined;

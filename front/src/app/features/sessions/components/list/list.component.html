@@ -7,7 +7,7 @@
         <span class="ml1">Create</span>
       </button>
     </mat-card-header>
-    <div class="items mt2" fxLayout="row wrap" fxLayout.lt-md="column">
+    <div id="items" class="items mt2" fxLayout="row wrap" fxLayout.lt-md="column">
       <mat-card class="item" *ngFor="let session of (sessions$ | async)" fxFlex>
         <mat-card-header>
           <mat-card-title>{{ session.name }}</mat-card-title>
