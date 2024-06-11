@@ -46,7 +46,7 @@ class UserServiceTest {
         userService.delete(userId);
 
         //then
-        //verification que la "deleteById" à été appelé q'une seule fois avec l'id de l'utilisateur
+        //verification que la "deleteById" a été appelé q'une seule fois avec l'id de l'utilisateur
         verify(mockUserRepository, times(1)).deleteById(userId);
 
     }

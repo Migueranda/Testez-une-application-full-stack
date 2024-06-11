@@ -122,12 +122,6 @@ public class SpringBootSecurityJwtApplicationTests {
 	public void setUp() {
 		MockitoAnnotations.openMocks(this);
 
-//		sessionRepository.deleteAll();
-//
-//		session = new Session();
-//		session.setName("Test Session");
-//		session = sessionRepository.save(session);
-//
 		List<User> mockUsers = new ArrayList<>();
 		mockUsers.add(new User(1L, "user1@mail.com", "User", "USER", "password", false, LocalDateTime.now(), LocalDateTime.now()));
 		mockUsers.add(new User(2L, "user2@mail.com", "Test", "TEST", "password", true, LocalDateTime.now(), LocalDateTime.now()));
@@ -246,7 +240,6 @@ public class SpringBootSecurityJwtApplicationTests {
 
 	}
 
-
 	/**
 	 * Test pour vérifier que l'API permet de récupérer une session par son ID.
 	 * Utilise un utilisateur simulé avec le rôle "USER".
@@ -280,7 +273,6 @@ public class SpringBootSecurityJwtApplicationTests {
 				.andExpect(jsonPath("$.name").value("Test Session"));
 	}
 
-
 	/**
 	 * Test pour vérifier que l'API retourne une réponse HTTP 404 Not Found
 	 * lorsque la session avec l'ID donné n'est pas trouvée.
@@ -303,7 +295,6 @@ public class SpringBootSecurityJwtApplicationTests {
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNotFound());
 	}
-
 
 	/**
 	 * Test pour vérifier que l'API retourne une réponse HTTP 400 Bad Request
@@ -470,7 +461,6 @@ public class SpringBootSecurityJwtApplicationTests {
 				.andExpect(status().isBadRequest());
 	}
 
-
 	/**
 	 * Test pour vérifier que l'API permet de supprimer une session et retourne le statut HTTP 200 OK.
 	 * Utilise un utilisateur simulé avec le rôle "USER".
@@ -586,7 +576,6 @@ public class SpringBootSecurityJwtApplicationTests {
 				.andExpect(status().isBadRequest());
 	}
 
-
 	/**
 	 * Test pour vérifier que l'API permet à un utilisateur de cesser de participer à une session
 	 * avec des identifiants valides et retourne le statut HTTP 200 OK.
@@ -631,8 +620,6 @@ public class SpringBootSecurityJwtApplicationTests {
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isBadRequest());
 	}
-
-
 
 	//***************************************************************************************************************
 	//test user******************************************************************************************************
@@ -915,7 +902,6 @@ public class SpringBootSecurityJwtApplicationTests {
 				.andExpect(status().isBadRequest());
 	}
 
-
 	/**
 	 * Test pour vérifier que l'API permet de récupérer tous les enseignants
 	 * et retourne le statut HTTP 200 OK.
@@ -969,6 +955,7 @@ public class SpringBootSecurityJwtApplicationTests {
 				.andExpect(jsonPath("$[1].firstName").value("Jane"))
 				.andExpect(jsonPath("$[1].lastName").value("Smith"));
 	}
+
 	/**
 	 * Test pour vérifier que l'API retourne une réponse HTTP 200 OK
 	 * lorsque la liste des enseignants est vide.
@@ -994,14 +981,4 @@ public class SpringBootSecurityJwtApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$").isEmpty());
 	}
-
-
-	private String asJsonString(final Object obj) {
-		try {
-			return new ObjectMapper().writeValueAsString(obj);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 }

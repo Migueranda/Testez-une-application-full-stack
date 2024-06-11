@@ -1,9 +1,7 @@
 package com.openclassrooms.starterjwt.services;
 
 import com.openclassrooms.starterjwt.models.Teacher;
-import com.openclassrooms.starterjwt.models.User;
 import com.openclassrooms.starterjwt.repository.TeacherRepository;
-import com.openclassrooms.starterjwt.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -16,17 +14,13 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 class TeacherServiceTest {
     @InjectMocks//injection des mocks dans le service
     private TeacherService teacherService;
-
     @Mock
     private TeacherRepository mockTeacherRepository;
-
     @BeforeEach
     void setUp() {
         // ce code garantit que les mocks sont prêts à être utilisés dans chaque test.
@@ -40,7 +34,6 @@ class TeacherServiceTest {
     @Test
     public void testFindTeacherById (){
 
-        //Long teacherId = 1L;
         // création d'une instance de la classe Teacher
         Teacher teacher = new Teacher();
         teacher.setId(1L);
@@ -53,11 +46,8 @@ class TeacherServiceTest {
         // le résultat stocké dans une variable result.
         Teacher result = teacherService.findById(teacher.getId());
 
-        //verify(mockTeacherRepository, times(1)).findById(teacher.getId());
-
         // utilisation d'assertion assertEquals() pour comparer le professeur récupéré avec le professeur créé précédemment.
         assertEquals(teacher, result);
-
     }
 
     @Test
@@ -84,8 +74,6 @@ class TeacherServiceTest {
             assertEquals(expectedTeachers.get(i).getCreatedAt(), actualTeachers.get(i).getCreatedAt());
             assertEquals(expectedTeachers.get(i).getUpdatedAt(), actualTeachers.get(i).getUpdatedAt());
         }
-        // Verifying that findAll() method is called exactly once
-        //verify(mockTeacherRepository, times(1)).findAll();
     }
 
 }

@@ -6,8 +6,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @TestConfiguration
 public class SecurityTestConfig {
-
-
     @Bean
     public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();

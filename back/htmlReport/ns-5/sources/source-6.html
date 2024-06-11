@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > TeacherMapper</title>
+  <title>Coverage Report > EntityMapper</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,25 +22,16 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.openclassrooms.starterjwt.mapper</a>
 </div>
 
-<h1>Coverage Summary for Class: TeacherMapper (com.openclassrooms.starterjwt.mapper)</h1>
+<h1>Coverage Summary for Class: EntityMapper (com.openclassrooms.starterjwt.mapper)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
 </tr>
-  <tr>
-    <td class="name">TeacherMapper$MockitoMock$2123204346</td>
-  </tr>
-  <tr>
-    <td class="name">TeacherMapper$MockitoMock$2123204346$auxiliary$gbGej6Ux</td>
-  </tr>
-  <tr>
-    <td class="name">TeacherMapper$MockitoMock$2123204346$auxiliary$qMifXBaT</td>
-  </tr>
 <tr>
-  <td class="name"><strong>Total</strong></td>
+  <td class="name">EntityMapper</td>
 </tr>
+
 </table>
 
 <br/>
@@ -50,14 +41,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package com.openclassrooms.starterjwt.mapper;
 &nbsp;
-&nbsp;import com.openclassrooms.starterjwt.dto.TeacherDto;
-&nbsp;import com.openclassrooms.starterjwt.models.Teacher;
-&nbsp;import org.mapstruct.Mapper;
-&nbsp;import org.springframework.stereotype.Component;
+&nbsp;import java.util.List;
 &nbsp;
-&nbsp;@Component
-&nbsp;@Mapper(componentModel = &quot;spring&quot;)
-&nbsp;public interface TeacherMapper extends EntityMapper&lt;TeacherDto, Teacher&gt; {
+&nbsp;public interface EntityMapper&lt;D, E&gt; {
+&nbsp;
+&nbsp;    E toEntity(D dto);
+&nbsp;
+&nbsp;    D toDto(E entity);
+&nbsp;
+&nbsp;    List&lt;E&gt; toEntity(List&lt;D&gt; dtoList);
+&nbsp;
+&nbsp;    List&lt;D&gt; toDto(List&lt;E&gt; entityList);
 &nbsp;}
 </code>
 </pre>
@@ -82,7 +76,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-24 16:06</div>
+    <div style="float:right;">generated on 2024-06-11 10:19</div>
 </div>
 </body>
 </html>

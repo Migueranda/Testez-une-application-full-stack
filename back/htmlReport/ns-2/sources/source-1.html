@@ -57,19 +57,19 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 </tr>
   <tr>
-    <td class="name">AuthController$MockitoMock$241962714</td>
+    <td class="name">AuthController$MockitoMock$1437786314</td>
   </tr>
   <tr>
-    <td class="name">AuthController$MockitoMock$241962714$auxiliary$f47uF8zh</td>
+    <td class="name">AuthController$MockitoMock$1437786314$auxiliary$CD0f4L4c</td>
   </tr>
   <tr>
-    <td class="name">AuthController$MockitoMock$241962714$auxiliary$Ml9S8BkK</td>
+    <td class="name">AuthController$MockitoMock$1437786314$auxiliary$FwBcMjuB</td>
   </tr>
   <tr>
-    <td class="name">AuthController$MockitoMock$241962714$auxiliary$QtXWASSF</td>
+    <td class="name">AuthController$MockitoMock$1437786314$auxiliary$lTy9HZFc</td>
   </tr>
   <tr>
-    <td class="name">AuthController$MockitoMock$241962714$auxiliary$TERA7x0w</td>
+    <td class="name">AuthController$MockitoMock$1437786314$auxiliary$SHEB5HdU</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -101,10 +101,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 &nbsp;import javax.validation.Valid;
 &nbsp;
-&nbsp;import org.springframework.http.HttpStatus;
 &nbsp;import org.springframework.http.ResponseEntity;
 &nbsp;import org.springframework.security.authentication.AuthenticationManager;
-&nbsp;import org.springframework.security.authentication.BadCredentialsException;
 &nbsp;import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 &nbsp;import org.springframework.security.core.Authentication;
 &nbsp;import org.springframework.security.core.context.SecurityContextHolder;
@@ -145,15 +143,9 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;        this.userRepository = userRepository;</b>
 &nbsp;    }
 &nbsp;
-&nbsp;
-&nbsp;    //    if (authentication == null) {
-&nbsp;//            // Gérer le cas où l&#39;authentification échoue
-&nbsp;//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(&quot;Authentication failed&quot;);
-&nbsp;//        }
-&nbsp;
 &nbsp;    @PostMapping(&quot;/login&quot;)
 &nbsp;    public ResponseEntity&lt;?&gt; authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-&nbsp;//        try {
+&nbsp;
 <b class="fc">&nbsp;        Authentication authentication = authenticationManager.authenticate(</b>
 <b class="fc">&nbsp;                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));</b>
 &nbsp;
@@ -175,13 +167,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;                userDetails.getLastName(),</b>
 <b class="fc">&nbsp;                isAdmin));</b>
 &nbsp;
-&nbsp;//        } catch (BadCredentialsException ex) {
-&nbsp;//            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-&nbsp;//                    .body(&quot;Invalid email or password&quot;);
-&nbsp;//
-&nbsp;//        }
 &nbsp;    }
-&nbsp;
 &nbsp;
 &nbsp;    @PostMapping(&quot;/register&quot;)
 &nbsp;    public ResponseEntity&lt;?&gt; registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
@@ -225,7 +211,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-24 16:06</div>
+    <div style="float:right;">generated on 2024-06-11 10:19</div>
 </div>
 </body>
 </html>

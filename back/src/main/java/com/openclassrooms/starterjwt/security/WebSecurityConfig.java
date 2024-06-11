@@ -21,8 +21,9 @@ import com.openclassrooms.starterjwt.security.services.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-    // securedEnabled = true,
-    // jsr250Enabled = true,
+        //activer les annotations de sécurité globale
+    securedEnabled = true,
+    jsr250Enabled = true,
     prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
