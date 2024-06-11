@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Detail Page', () => {
+describe('Test E2E pour DetailCoponent', () => {
     beforeEach(() => {
       // Visite la page de connexion
       cy.visit('/login');
@@ -68,7 +68,7 @@ describe('Detail Page', () => {
       cy.wait('@getSessions');
     });
   
-    it('should display session details and delete session', () => {
+    it('Afficher les détails de la session et supprimer la session', () => {
       // Intercepte la requête pour obtenir les détails de la session
       cy.intercept('GET', '/api/session/1', {
         statusCode: 200,

@@ -1,6 +1,6 @@
 
 /// <reference types="cypress" />
-describe('Update Session E2E Test', () => {
+describe('Modifier Session E2E Test', () => {
     beforeEach(() => {
 
       // Interception des détails de la session pour le formulaire de mise à jour
@@ -31,7 +31,7 @@ describe('Update Session E2E Test', () => {
       }).as('getTeachers');
     });
 
-    it('Login successfully and display sessions', () => {
+    it('Connexion réussie et affichage des sessions', () => {
       // Visite de la page de connexion
       cy.visit('/login');
       

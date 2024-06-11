@@ -31,7 +31,6 @@ describe('SessionService', () => {
       // Espionner la méthode next pour vérifier qu'elle est appelée
       const nextSpy = jest.spyOn(service as any, 'next' as any);
 
-
       // Appeler la méthode logIn
       service.logIn(sessionInfo);
 

@@ -12,7 +12,8 @@ import { MeComponent } from './me.component';
 import { UserService } from 'src/app/services/user.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Location } from '@angular/common';
-import { routes } from 'src/app/app-routing.module'; // Importez les routes ici
+
+import{routes} from 'src/app/app-routing.module'
 import { User } from 'src/app/interfaces/user.interface';
 import { NgZone } from '@angular/core';
 
@@ -176,3 +177,5 @@ describe('MeComponent', () => {
   });
   
 });
+
+

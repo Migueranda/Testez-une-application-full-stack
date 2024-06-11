@@ -60,7 +60,6 @@ describe('Spécification de Connexion', () => {
       url: '/api/session',
     },
     []).as('session')
-
    
     cy.get('input[formControlName=email]').type("yoga@studio.com")
     cy.get('input[formControlName=password]').type(`${"wrongpassword"}{enter}{enter}`)

@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 describe('DetailComponent', () => {
+  // Déclaration des variables de test
   let component: DetailComponent;
   let fixture: ComponentFixture<DetailComponent>;
   let sessionApiService: jest.Mocked<SessionApiService>;
@@ -27,6 +28,7 @@ describe('DetailComponent', () => {
   let matSnackBar: jest.Mocked<MatSnackBar>;
   let router: jest.Mocked<Router>;
 
+  // Mock pour les informations de session
   const mockSessionService = {
     sessionInformation: {
       admin: true,
@@ -34,8 +36,9 @@ describe('DetailComponent', () => {
     }
   }
 
+
   beforeEach(async () => {
-     //add unknow to all conversion for non overlapping types
+     // Mocks des services avec conversion inconnue pour les types non chevauchants
      const sessionApiServiceMock = {
        all: jest.fn(),
        detail: jest.fn(),
@@ -46,7 +49,6 @@ describe('DetailComponent', () => {
        unParticipate: jest.fn()
      } as unknown as jest.Mocked<SessionApiService>;
 
-      //add unknow to all conversion for non overlapping types
      const sessionServiceMock = {
       sessionInformation: { id: 1, admin: true }
     } as jest.Mocked<SessionService>;
@@ -62,9 +64,8 @@ describe('DetailComponent', () => {
     const routerMock = {
       navigate: jest.fn()
     } as unknown as jest.Mocked<Router>;
-
-
-    
+         
+    // Configuration du TestBed pour fournir les dépendances et les modules nécessaires
     await TestBed.configureTestingModule({
       declarations: [DetailComponent],
       imports: [HttpClientTestingModule, ReactiveFormsModule,  MatCardModule, MatIconModule ],
@@ -87,6 +88,7 @@ describe('DetailComponent', () => {
       ]
     }).compileComponents();
 
+    // Création de la fixture et initialisation du composant
     fixture = TestBed.createComponent(DetailComponent);
     component = fixture.componentInstance;
     sessionApiService = TestBed.inject(SessionApiService) as jest.Mocked<SessionApiService>;
@@ -96,11 +98,12 @@ describe('DetailComponent', () => {
     router = TestBed.inject(Router) as jest.Mocked<Router>;
   });
 
-
+  // Test pour vérifier que le composant est créé correctement
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
+  // Test pour vérifier le chargement des détails de la session à l'initialisation
   it('should fetch session details on init', () => {
     const mockSession: Session = {
       id: 1,
@@ -112,14 +115,16 @@ describe('DetailComponent', () => {
       createdAt: new Date(),
       updatedAt: new Date()
     };
+
     const mockTeacher: Teacher = {id: 1, firstName: 'John', lastName: 'Doe', createdAt: new Date('2023-01-01T00:00:00Z'), updatedAt: new Date('2023-01-02T00:00:00Z') };
   
-
+    // Mock des méthodes pour retourner les valeurs simulées
     sessionApiService.detail.mockReturnValue(of(mockSession));
     teacherService.detail.mockReturnValue(of(mockTeacher));
 
     fixture.detectChanges(); // ngOnInit() is called here
 
+    // Vérifications des appels et des valeurs
     expect(sessionApiService.detail).toHaveBeenCalledTimes(1);
     expect(sessionApiService.detail).toHaveBeenCalledWith('1');
     expect(component.session).toEqual(mockSession);
@@ -128,11 +133,13 @@ describe('DetailComponent', () => {
     expect(component.teacher).toEqual(mockTeacher);
   });
 
+  // Test pour vérifier la suppression de la session et la navigation
   it('should delete the session and navigate away', () => {
     sessionApiService.delete.mockReturnValue(of(null));
 
     component.delete();
 
+      // Vérifications des appels et des valeurs
     expect(sessionApiService.delete).toHaveBeenCalledTimes(1);
     expect(sessionApiService.delete).toHaveBeenCalledWith('1');
     expect(matSnackBar.open).toHaveBeenCalledTimes(1);
@@ -141,20 +148,22 @@ describe('DetailComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['sessions']);
   });
 
+  // Test pour vérifier la participation à une session
   it('should participate in a session', () => {
     sessionApiService.participate.mockReturnValue(of(void 0));
 
     component.participate();
-
+    // Vérifications des appels
     expect(sessionApiService.participate).toHaveBeenCalledTimes(1);
     expect(sessionApiService.participate).toHaveBeenCalledWith('1', '1');
   });
 
+  // Test pour vérifier l'annulation de la participation à une session
   it('should unParticipate from a session', () => {
     sessionApiService.unParticipate.mockReturnValue(of(void 0));
 
     component.unParticipate();
-
+  // Vérifications des appels
     expect(sessionApiService.unParticipate).toHaveBeenCalledTimes(1);
     expect(sessionApiService.unParticipate).toHaveBeenCalledWith('1', '1');
   });

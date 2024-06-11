@@ -2,7 +2,7 @@
 describe('Test E2E pour ListComponent', () => {
   
   // Test pour vérifier une connexion réussie et l'affichage des sessions
-  it('Connexion réussie et affichage des sessions', () => {
+  it('Connexion réussie et affichage liste de sessions', () => {
    
     cy.visit('/login');
 

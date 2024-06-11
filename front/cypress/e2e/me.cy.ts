@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Me Page', () => {
+describe('Page Me', () => {
     beforeEach(() => {
       // Visite la page de connexion
       cy.visit('/login');
@@ -63,8 +63,8 @@ describe('Me Page', () => {
       }).as('getUser');
     });
   
-    it('should display Admin information correctly', () => {
-      // Intercepte la requête pour obtenir les informations utilisateur
+    it('Devrait afficher correctement les informations de admin', () => {
+      // Intercepte la requête pour obtenir les informations admin
       cy.intercept('GET', '/api/user/1', {
         statusCode: 200,
         body: {
@@ -93,7 +93,7 @@ describe('Me Page', () => {
       cy.get('p').contains('Last update:').should('exist');
     });
 
-    it('should display user information correctly', () => {
+    it("Devrait afficher correctement les informations de l'utilisateur", () => {
         // Intercepte la requête pour obtenir les informations utilisateur
         cy.intercept('GET', '/api/user/1', {
           statusCode: 200,
@@ -121,11 +121,9 @@ describe('Me Page', () => {
         cy.get('p').contains('You are admin').should('not.exist');
         cy.get('p').contains('Create at:').should('exist');
         cy.get('p').contains('Last update:').should('exist');
-      });
+      });   
   
-  
-  
-    it('should navigate back when clicking back button', () => {
+    it('Devrait revenir en arrière en cliquant sur le bouton de retour', () => {
       
           // Clique sur le bouton Account pour naviguer vers la page /me
           cy.get('[routerlink="me"]').should('exist').click();
@@ -137,7 +135,7 @@ describe('Me Page', () => {
    
     });
   
-    it('should delete the account if not admin', () => {
+    it("Devrait supprimer le compte si l'utilisateur n'est pas administrateur", () => {
       // Simulater un utilisateur que n'est pas un admin
       cy.intercept('GET', '/api/user/1', {
         statusCode: 200,
@@ -158,16 +156,14 @@ describe('Me Page', () => {
         body: {},
     }).as('deleteUser');
 
-
       cy.get('[routerlink="me"]').should('exist').click();
   
       cy.url().should('include', '/me');
   
       cy.wait('@getUser');
 
-      cy.get('button').contains('delete').should('exist');
-      cy.get('button').contains('delete').click();
-
+      cy.get('.my2 > .mat-focus-indicator').should('exist').click();;
+     
       cy.wait('@deleteUser');
       
       cy.get('.mat-snack-bar-container').should('contain', 'Your account has been deleted !');
