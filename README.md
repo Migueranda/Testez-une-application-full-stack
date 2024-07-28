@@ -14,12 +14,12 @@ git clone git@github.com:Migueranda/Testez-une-application-full-stack.git
 ```bash
 npm install
 ```
-**Run application :**
+**Run application**
 
 ```bash
 ng serve
 ```
-**By default the admin account is:**
+**By default the admin account is :**
 
 * login: yoga@studio.com
 * password: test!1234
@@ -47,7 +47,7 @@ Use [DBeaver](https://dbeaver.io/download/) to manage script end read data
 ```bash
   npm run cypress:run-all
 ```
-**Coverage report**&nbsp;&nbsp;&nbsp;*\front\coverage\index.htm*
+**Coverage report**&nbsp;&nbsp;&nbsp;*front\coverage\index.htm*
 
 # Launch Jest test
 
